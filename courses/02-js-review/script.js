@@ -1,3 +1,4 @@
+/*
 const data = [
     {
         id: 1,
@@ -259,3 +260,24 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
     book.id === 1 ? { ...book, author: "Magnifico" } : book
 );
 console.log(booksAfterUpdate);
+*/
+
+// Asynchronous Javascript Promises
+// fetch("https://jsonplaceholder.typicode.com/todos/1")
+//     .then((response) => response.json())
+//     .then((data) => console.log(data));
+
+// console.log("Hello World");
+
+// Asynchronous Javascript Async/Await
+async function getTodos() {
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    const data = await res.json();
+    console.log(data);
+    console.log("Hello World!");
+    return data;
+}
+
+const todo = await getTodos();
+console.log(todo)
+console.log("Magnifico");
