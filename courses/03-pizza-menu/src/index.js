@@ -89,15 +89,14 @@ function Menu() {
     );
 }
 
-function Pizza({ myPizza }) {
-    console.log(myPizza);
+function Pizza(props) {
     return (
         <div className="pizza">
-            <img src={myPizza.photoName} alt="Pizza spinaci" />
+            <img src={props.myPizza.photoName} alt="Pizza spinaci" />
             <div>
-                <h3>{myPizza.name}</h3>
-                <p>{myPizza.ingredients}</p>
-                <span>{myPizza.price + 3}</span>
+                <h3>{props.myPizza.name}</h3>
+                <p>{props.myPizza.ingredients}</p>
+                <span>{props.myPizza.price + 3}</span>
             </div>
         </div>
     );
