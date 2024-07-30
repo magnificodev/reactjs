@@ -66,8 +66,8 @@ function Header() {
 }
 
 function Menu() {
-    // const pizzas = pizzaData;
-    const pizzas = [];
+    const pizzas = pizzaData;
+    // const pizzas = [];
     const numPizzas = pizzas.length;
     return (
         <main className="menu">
@@ -88,6 +88,8 @@ function Menu() {
 }
 
 function Pizza({ myPizza }) {
+    // if (myPizza.soldOut) return null;
+
     return (
         <li className={"pizza" + (myPizza.soldOut ? " sold-out" : "")}>
             <img src={myPizza.photoName} alt="Pizza spinaci" />
@@ -103,25 +105,36 @@ function Pizza({ myPizza }) {
 function Footer() {
     const hour = new Date().getHours();
     const openHour = 12;
-    const closeHour = 22;
+    const closeHour = 21;
     const isOpen = hour >= openHour && hour <= closeHour;
 
     // console.log(isOpen ? "We're currently open!" : "Sorry we're closed!");
+
+    // if (!isOpen) {
+    //     return (
+    //         <footer className="footer">
+    //             <p>
+    //                 We're happy to welcome you between {openHour}:00 to{" "}
+    //                 {closeHour + 1}:00 everyday!
+    //             </p>
+    //         </footer>
+    //     );
+    // }
 
     return (
         <footer className="footer">
             {isOpen ? (
                 <div className="order">
                     <p>
-                        We`re open until {closeHour}:00. Come visit us or order
-                        online!
+                        We`re open until {closeHour + 1}:00. Come visit us or
+                        order online!
                     </p>
                     <button className="btn">Order</button>
                 </div>
             ) : (
                 <p>
                     We're happy to welcome you between {openHour}:00 to{" "}
-                    {closeHour}:00 everyday :))
+                    {closeHour + 1}:00 everyday!
                 </p>
             )}
         </footer>
