@@ -66,35 +66,26 @@ function Header() {
 }
 
 function Menu() {
-    const myPizzas = [
-        {
-            name: "Pizza spinaci",
-            ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
-            price: 12,
-            photoName: "./pizzas/spinaci.jpg",
-        },
-        {
-            name: "Pizza Funghi",
-            ingredients: "Tomato, mozarella, mushrooms, and onion",
-            price: 12,
-            photoName: "pizzas/funghi.jpg",
-        },
-    ];
+    const pizzas = pizzaData;
+    // const pizzas = [];
+    const numPizzas = pizzas.length
     return (
         <main className="menu">
             <h2>Our menu</h2>
-            <ul className="pizzas">
-                {pizzaData.map((pizza, index) => (
-                    <Pizza myPizza={pizza} key={index} />
-                ))}
-            </ul>
+            {!!numPizzas && (
+                <ul className="pizzas">
+                    {pizzaData.map((pizza, index) => (
+                        <Pizza myPizza={pizza} key={index} />
+                    ))}
+                </ul>
+            )}
         </main>
     );
 }
 
 function Pizza({ myPizza }) {
     return (
-        <li className={`pizza ${myPizza.soldOut && "sold-out"}`}>
+        <li className={"pizza" + (myPizza.soldOut ? " sold-out" : "")}>
             <img src={myPizza.photoName} alt="Pizza spinaci" />
             <div>
                 <h3>{myPizza.name}</h3>
@@ -111,9 +102,21 @@ function Footer() {
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
 
-    console.log(isOpen ? "We're currently open!" : "Sorry we're closed!");
+    // console.log(isOpen ? "We're currently open!" : "Sorry we're closed!");
 
-    return <footer className="footer">We're currently open!</footer>;
+    return (
+        <footer className="footer">
+            {isOpen && (
+                <div className="order">
+                    <p>
+                        We`re open until {openHour}:00. Come visit us or order
+                        online!
+                    </p>
+                    <button className="btn">Order</button>
+                </div>
+            )}
+        </footer>
+    );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
