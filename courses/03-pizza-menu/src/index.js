@@ -72,12 +72,20 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our menu</h2>
+
             {!!numPizzas ? (
-                <ul className="pizzas">
-                    {pizzaData.map((pizza, index) => (
-                        <Pizza myPizza={pizza} key={index} />
-                    ))}
-                </ul>
+                <React.Fragment>
+                    <p>
+                        Authentic Italian cuisine. 6 creative dishes to choose
+                        from. All from our stone oven, all organic, all
+                        delicious
+                    </p>
+                    <ul className="pizzas">
+                        {pizzaData.map((pizza, index) => (
+                            <Pizza myPizza={pizza} key={index} />
+                        ))}
+                    </ul>
+                </React.Fragment>
             ) : (
                 <p>
                     We're still working on our menu. Please come back later ^^
@@ -124,7 +132,7 @@ function Footer() {
     return (
         <footer className="footer">
             {isOpen ? (
-                <Order closeHour={closeHour} openHour={openHour}/>
+                <Order closeHour={closeHour} openHour={openHour} />
             ) : (
                 <p>
                     We're happy to welcome you between {openHour}:00 to{" "}
@@ -139,8 +147,8 @@ const Order = ({ closeHour, openHour }) => {
     return (
         <div className="order">
             <p>
-                We`re open from {openHour}:00 to {closeHour}:00. Come visit us or order
-                online!
+                We`re open from {openHour}:00 to {closeHour}:00. Come visit us
+                or order online!
             </p>
             <button className="btn">Order</button>
         </div>
