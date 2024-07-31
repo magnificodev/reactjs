@@ -5,22 +5,22 @@ const messages = [
 ];
 
 const App = () => {
-    const step = 1;
+    var step = 1;
 
-    const previous = (e) => {
-        console.log(e.target)
+    const handlePrevious = (e) => {
+        console.log(e.currentTarget)
     }
 
-    const next = (e) => {
-        console.log(e.target)
+    const handleNext = (e) => {
+        console.log(e.currentTarget)
     }
 
     return (
         <div className="steps">
             <div className="numbers">
-                <div className={step >= 1 && "active"}>1</div>
-                <div className={step >= 2 && "active"}>2</div>
-                <div className={step >= 3 && "active"}>3</div>
+                <div className={step >= 1 ? "active" : ""}>1</div>
+                <div className={step >= 2 ? "active" : ""}>2</div>
+                <div className={step >= 3 ? "active" : ""}>3</div>
             </div>
             <div className="message">
                 <h3>
@@ -29,7 +29,7 @@ const App = () => {
             </div>
             <div className="buttons">
                 <button
-                    onClick={previous}
+                    onClick={handlePrevious}
                     style={{
                         backgroundColor: "var(--primary-color)",
                         color: "var(--white-color)",
@@ -38,7 +38,7 @@ const App = () => {
                     <span>Previous</span>
                 </button>
                 <button
-                    onClick={next}
+                    onClick={handleNext}
                     style={{
                         backgroundColor: "var(--primary-color)",
                         color: "var(--white-color)",
