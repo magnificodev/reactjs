@@ -48,7 +48,7 @@ const App = () => {
                         ? "Today is "
                         : count < 0
                         ? `${count * -1} days ago was `
-                        : `${count * -1} days from today is `}
+                        : `${count} days from today is `}
                 </span>
                 <span>{date.toDateString()}</span>
             </p>
