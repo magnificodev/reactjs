@@ -38,17 +38,13 @@ function Steps() {
                     <div className={step >= 2 ? "active" : ""}>2</div>
                     <div className={step >= 3 ? "active" : ""}>3</div>
                 </div>
-                <div className="message">
-                    Step {step}: {messages[step - 1]}
-                </div>
+                <StepMessage step={step}>{messages[step - 1]}</StepMessage>
                 <div className="buttons">
                     <Button
                         color="var(--white-color)"
                         backColor="var(--primary-color)"
                         onClick={handlePrevious}
-                        text="Previous"
                         isDisabled={step <= 1}
-                        emoji="👈"
                     >
                         <span>👈Previous</span>
                     </Button>
@@ -56,9 +52,7 @@ function Steps() {
                         color="var(--white-color)"
                         backColor="var(--primary-color)"
                         onClick={handleNext}
-                        text="Next"
                         isDisabled={step >= 3}
-                        emoji="👉"
                     >
                         <span>Next👉</span>
                     </Button>
@@ -68,13 +62,15 @@ function Steps() {
     );
 }
 
-function Button({
-    color,
-    backColor,
-    onClick,
-    isDisabled,
-    children,
-}) {
+function StepMessage({ step, children }) {
+    return (
+        <div className="message">
+            <h3>Step {step}:</h3> {children}
+        </div>
+    );
+}
+
+function Button({ color, backColor, onClick, isDisabled, children }) {
     return (
         <button
             onClick={onClick}
