@@ -48,7 +48,7 @@ export default function App() {
                     : friend
             )
         );
-        setSelectFriend(null)
+        setSelectFriend(null);
     };
 
     return (
@@ -66,6 +66,7 @@ export default function App() {
             </div>
             {selectFriend && (
                 <FormSplitBill
+                    key={selectFriend.id}
                     selectFriend={selectFriend}
                     onSelectFriend={handleSelectFriend}
                     onUpdateBalance={handleUpdateBalance}
